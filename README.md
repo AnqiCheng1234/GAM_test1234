@@ -47,13 +47,13 @@ python inference_single_image.py --image_path=/home/image_path --load_weights_fo
 ## Evaluation
 
 ### Download test dataset
-Please download [test datasets](https://drive.google.com/drive/folders/1F9sn6kL0NhU5ieTOmG8JqgFTbti_Uk_H?usp=sharing) of NYUv2, ScanNet, and InteriorNet
+Please download [test datasets](https://drive.google.com/drive/folders/1F9sn6kL0NhU5ieTOmG8JqgFTbti_Uk_H?usp=sharing) of NYUv2, ScanNet, and InteriorNet and unzip them to VAL_PATH
 
 ### Evaluate NYUv2/InteriorNet/ScanNet depth
 Modify the evaluation script in eval.sh to evaluate NYUv2/ScanNet/InteriorNet depth separately
 ```bash
 python evaluation/nyuv2_eval_depth.py \
-  --data_path DATA_PATH \
+  --data_path VAL_PATH \
   --load_weights_folder MODEL_PATH \
 ```
 
@@ -64,21 +64,22 @@ The raw NYU dataset is about 400G and has 590 videos. You can download the raw d
 
 ### Download main directions and proxy semantic labels
 Please download main directions with a random flip and proxy semantic labels from [there](https://drive.google.com/drive/folders/19BoAbiXwIwmIjzeQ8-KwgMfCD3lEjFb0?usp=sharing) and unzip them to VPS_PATH and SEG_PATH
+Proxy semantic labels are generated from [Light-Weight RefineNet](https://github.com/DrSleep/light-weight-refinenet)
 
 ### Training
 Modify the training script train.sh for PATH or different trainning settings.
 ```bash
 python train.py \
-  --data_path /home/data_path/ \
-  --val_path /home/val_path/ \
-  --vps_path /home/vps_path/ \
-  --seg_path /home/seg_path/ \
+  --data_path DATA_PATH \
+  --val_path VAL_PATH \
+  --vps_path VPS_PATH \
+  --seg_path SEG_PATH/ \
   --log_dir ../logs/ \
   --model_name 1 \
   --batch_size 4 \
   --num_epochs 50 \
   --start_epoch 0 \
-  --load_weights_folder /home/load_weights_folder/ \
+  --load_weights_folder MODEL_PATH/pretrain/ \
   --using_GAM GAM \
   --using_seg
 ```
