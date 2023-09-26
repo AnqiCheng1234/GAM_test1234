@@ -64,6 +64,7 @@ The raw NYU dataset is about 400G and has 590 videos. You can download the raw d
 
 ### Download main directions and proxy semantic labels
 Please download main directions with a random flip and proxy semantic labels from [there](https://drive.google.com/drive/folders/19BoAbiXwIwmIjzeQ8-KwgMfCD3lEjFb0?usp=sharing) and unzip them to VPS_PATH and SEG_PATH
+
 Proxy semantic labels are generated from [Light-Weight RefineNet](https://github.com/DrSleep/light-weight-refinenet)
 
 ### Training
