@@ -13,12 +13,6 @@ Anqi Cheng, ZHiyuan Yang, Haiyue Zhu, Kezhi Mao
 
 ### Installation
 
-The Python and PyTorch versions we use:
-
-python=3.6
-
-pytorch=1.10.1=py3.6_cuda11.3_cudnn8.2.0_0
-
 **Step1**: Creating a virtual environment
 
 ```bash
@@ -27,7 +21,7 @@ conda activate gam_depth
 conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch -c conda-forge
 ```
 
-**Step2**: Download [the modified scikit_image package](https://drive.google.com/file/d/15AMp8GO7QcK9SGQp6DJwNHtX29DRp5nG/view?usp=sharing) , in which the input parameters of the Felzenswalb algorithm have been changed to accommodate our method.
+**Step2**: Downloading [the modified scikit_image package](https://drive.google.com/file/d/15AMp8GO7QcK9SGQp6DJwNHtX29DRp5nG/view?usp=sharing) following [StructDepth](https://github.com/SJTU-ViSYS/StructDepth)
 
 ```bash
 unzip scikit-image-0.17.2.zip
@@ -53,12 +47,10 @@ python inference_single_image.py --image_path=/home/image_path --load_weights_fo
 ## Evaluation
 
 ### Download test dataset
-Please download [test dataset](https://drive.google.com/drive/folders/1F9sn6kL0NhU5ieTOmG8JqgFTbti_Uk_H?usp=sharing)
-
-It is recommended to unpack all test data and training data into the same data path and then modify the DATA_PATH when running a training or evaluation script.
+Please download [test datasets](https://drive.google.com/drive/folders/1F9sn6kL0NhU5ieTOmG8JqgFTbti_Uk_H?usp=sharing) of NYUv2, ScanNet, and InteriorNet
 
 ### Evaluate NYUv2/InteriorNet/ScanNet depth
-Modify the evaluation script in eval.sh to evaluate NYUv2/InteriorNet/ScanNet depth separately
+Modify the evaluation script in eval.sh to evaluate NYUv2/ScanNet/InteriorNet depth separately
 ```bash
 python evaluation/nyuv2_eval_depth.py \
   --data_path DATA_PATH \
@@ -71,7 +63,7 @@ python evaluation/nyuv2_eval_depth.py \
 The raw NYU dataset is about 400G and has 590 videos. You can download the raw datasets from [there](http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/nyu_depth_v2_raw.zip)
 
 ### Download main directions and proxy semantic labels
-Please download main directions with a random flip and proxy semantic labels from [there](https://drive.google.com/drive/folders/19BoAbiXwIwmIjzeQ8-KwgMfCD3lEjFb0?usp=sharing)
+Please download main directions with a random flip and proxy semantic labels from [there](https://drive.google.com/drive/folders/19BoAbiXwIwmIjzeQ8-KwgMfCD3lEjFb0?usp=sharing) and unzip them to VPS_PATH and SEG_PATH
 
 ### Training
 Modify the training script train.sh for PATH or different trainning settings.
