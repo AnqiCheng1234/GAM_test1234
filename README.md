@@ -74,7 +74,7 @@ python train.py \
   --data_path DATA_PATH \
   --val_path VAL_PATH \
   --vps_path VPS_PATH \
-  --seg_path SEG_PATH/ \
+  --seg_path SEG_PATH \
   --log_dir ../logs/ \
   --model_name 1 \
   --batch_size 4 \
